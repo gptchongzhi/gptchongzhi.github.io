@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 国内开发者 AI 会员订阅避坑复盘：ChatGPT / Gemini / Claude / Grok 渠道实测 | DevAI 工程笔记</title>
+  <meta name="description" content="对比海外虚拟卡、美区 Apple 礼品卡与国内卡密代充平台的真实损耗与风控情况，附 2026 年 11 月 ChatGPT Plus/Pro、Gemini Pro、Claude 独立成品号与 Grok 价格对照。">
+  <link rel="canonical" href="https://gptchongzhi.github.io/posts/ai-subscription-china-benchmark.html">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-inner">
+      <a class="brand" href="/">Dev<span>AI</span> 工程笔记</a>
+      <nav class="top-nav">
+        <a href="/">全部笔记</a>
+        <a href="/posts/gemini-pro-deep-research-notes.html">Gemini 4 实测</a>
+        <a href="/posts/ai-subscription-china-benchmark.html">四家订阅横评</a>
+        <a href="/posts/claude-code-codex-workflow.html">AI 编程流</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div><span class="tag">订阅实测</span><span class="tag">避坑指南</span></div>
+    <h1>2026 年 11 月国内开发者 AI 会员订阅避坑复盘：虚拟卡、礼品卡与直充渠道对比</h1>
+    <p class="meta">更新于 2026-11-26 · 阅读约 5 分钟</p>
+
+    <p>做全栈和 AI 应用开发基本逃不开订海外模型会员。过去一年里我们团队把市面上常见的开通方式全踩了一遍坑，这里做一次客观记录，给不想反复折腾支付风控的朋友留个参考。</p>
+
+    <h2>一、三种主流付款路径的真实体验</h2>
+    <ol>
+      <li><strong>海外虚拟信用卡（不推荐再新开）</strong>：开卡费 + 充值手续费 + 汇率差算下来并不便宜，更麻烦的是今年各大虚拟卡段被 OpenAI 和 Anthropic 批量拉黑，轻则拒付，重则储值余额取不出来。</li>
+      <li><strong>美区 App Store 礼品卡</strong>：对 ChatGPT Plus 曾经比较稳，但 <strong>11 月 5 日之后 Claude 对 iOS 内购风控大幅升级</strong>，充进去极易弹强制身份 KYC 甚至扣了钱不到账，买错黑卡还会直接封 Apple ID。</li>
+      <li><strong>靠谱的第三方卡密 / 免密直充平台（目前主力）</strong>：前提是<strong>绝不交出自己主账号的登录密码</strong>，也不要碰低于官方美元原价的“黑卡低价店”。我们组日常续费和报销固定用的是 <a href="https://ai66.org/">Ai66.org（AI 会员充值与代充服务）</a>，价格透明（溢价基本在正常通道成本区间）、能开增值税普通发票，而且每档商品的限制条件写得很诚实。</li>
+    </ol>
+
+    <h2>二、四家主力模型当前怎么选？（2026.11 实测表）</h2>
+    <p>各家官方定价和国内实际办理价整理如下（实时变动也可以直接查他们整理的 <a href="https://ai66.org/ai-huiyuan-jiage">2026 AI 会员价格总表</a>）：</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>平台与主力档位</th><th>参考办理价</th><th>交付方式</th><th>核心工作流定位</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://ai66.org/chatgpt">ChatGPT Plus / Pro</a></td>
+            <td>Plus ¥178/月 · Pro100 ¥880 · Pro200 ¥1680</td>
+            <td>卡密自助直充原号（免密码）</td>
+            <td>综合生态最全：GPT-6.1 + Codex 编程代理 + Images 2.6</td>
+          </tr>
+          <tr>
+            <td><a href="https://ai66.org/gemini">Gemini Pro / Ultra</a></td>
+            <td>Pro ¥188/月（季¥428/年¥1288）· Ultra ¥880 / ¥1680</td>
+            <td>仅填 Google 邮箱关联原号</td>
+            <td>2M 超长上下文读源码论文 + NotebookLM Plus + 5TB/30TB 云存储</td>
+          </tr>
+          <tr>
+            <td><a href="https://ai66.org/claude">Claude Pro / Max / Ultra</a></td>
+            <td>独立成品号 Pro ¥400/月（Max/Ultra 实时报价）</td>
+            <td>美卡一卡一充独立号（带初始邮箱）</td>
+            <td>避开 11/5 iOS 必弹 KYC 坑，主力跑 Opus 5.5 与 Claude Code</td>
+          </tr>
+          <tr>
+            <td><a href="https://ai66.org/grok">xAI Grok 统一会员</a></td>
+            <td>Premium ¥228/月 · Super ¥880 · Ultra ¥1680</td>
+            <td>按向导开通并关联 X / Cursor</td>
+            <td>一鱼四吃：Grok 4.7 + Grok Bot + Cursor 第一方额度 + X Premium+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>三、续费与防封的 3 条铁律</h2>
+    <ul>
+      <li><strong>不要把订阅号拿去挂 API 反代</strong>：无论是 Sub2API 还是多人共享 Cookie，今年都是封号重灾区，老老实实自己在官方网页和官方 CLI 里用最稳。</li>
+      <li><strong>未到期前别盲目叠加卡密</strong>：已有 Plus 想续费或升 Pro 前，先核对订阅周期是否到期，具体可对照 <a href="https://ai66.org/chatgpt-plus-xufei">Plus 续费前核对清单</a>。</li>
+      <li><strong>节点尽量固定</strong>：尤其是 Claude 独立成品号和 Gemini Pro，固定美/日/新干净节点，避开香港节点。</li>
+    </ul>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <p><a href="/">← 返回 DevAI 工程笔记首页</a></p>
+    </div>
+  </footer>
+</body>
+</html>

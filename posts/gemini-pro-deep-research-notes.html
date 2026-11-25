@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini 4 与 NotebookLM Plus 实测笔记：附国内 Gemini Pro 会员购买、代充与香港节点避坑 | DevAI 工程笔记</title>
+  <meta name="description" content="深度体验 Google Gemini 4 Carbon/Argon、Deep Research 与 NotebookLM Plus 5TB 云存储。详解国内无海外信用卡怎么开通 Google AI Pro（Gemini Pro / Ultra），以及提示不支持所在地区的 3 步排查。">
+  <link rel="canonical" href="https://gptchongzhi.github.io/posts/gemini-pro-deep-research-notes.html">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-inner">
+      <a class="brand" href="/">Dev<span>AI</span> 工程笔记</a>
+      <nav class="top-nav">
+        <a href="/">全部笔记</a>
+        <a href="/posts/gemini-pro-deep-research-notes.html">Gemini 4 实测</a>
+        <a href="/posts/ai-subscription-china-benchmark.html">四家订阅横评</a>
+        <a href="/posts/claude-code-codex-workflow.html">AI 编程流</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div><span class="tag">Google Gemini</span><span class="tag">工程效率</span></div>
+    <h1>Gemini 4（Carbon / Argon）与 NotebookLM Plus 读代码库实测：附国内 Google AI Pro 开通与香港节点避坑</h1>
+    <p class="meta">更新于 2026-11-26 · 阅读约 6 分钟</p>
+
+    <div class="note">
+      <strong>省流小结：</strong>如果你日常需要同时读几十篇英文论文、几百页 PDF 规范或跨多仓库查调用链，Google 的 <strong>Gemini Pro（官方名 Google AI Pro，原 Gemini Advanced）</strong> 目前是长文本与多步检索体验最舒服的一档，而且白送 <strong>5TB Google One 云存储</strong>。国内没有外币卡的话，我实测稳定在用的是 <a href="https://ai66.org/gemini">Ai66 的 Gemini Pro 会员购买与代充页</a>（Pro 月付 ¥188、季包 ¥428 折合 ¥143/月；Ultra 100刀版 ¥880、Ultra 旗舰版 ¥1680），只要填自己的 Google 邮箱关联就行，不需要给密码。
+    </div>
+
+    <h2>一、为什么下半年把主力文献流切到了 Gemini 4？</h2>
+    <p>Google 把 Gemini 4 世代拆成了三条很清晰的路线：日常编码和快答用 <strong>Argon / Hydrogen</strong>，遇到复杂数理推导或超长链路规划切 <strong>Carbon + Deep Think</strong>。相比单纯聊天框，它有两个很难替代的杀手锏：</p>
+    <ol>
+      <li><strong>真 1M–2M 上下文不掉帧</strong>：把整个微服务目录打包成单文本文件（可以用 <code>repomix</code> 导出）直接拖进对话框，一次性定位跨模块配置遗漏，不用反复切片做 RAG。</li>
+      <li><strong>Deep Research + NotebookLM Plus 组合拳</strong>：先让 Deep Research 自动跑几十个英文技术源生成带引用的综述报告，一键导入 Google Docs，再塞进 NotebookLM Plus 生成结构化思维导图和双人播客音频，通勤路上就能听完一个新框架的架构要点。</li>
+    </ol>
+    <pre><code># 实用技巧：用 npx repomix 将本地项目打包后投喂给 Gemini 2M 上下文
+npx repomix --output repo-context.txt --ignore "node_modules,dist,*.lock"</code></pre>
+
+    <h2>二、国内开通 Google AI Pro（Gemini Pro / Ultra）的坑与实测对比</h2>
+    <p>Google 官方订阅对付款卡发卡行和账单地址查得很严，国内双币 Visa 绑定时极易弹 <code>OR-CCSEH-21</code> 拒付风控；去淘低价共享号又会污染自己的 Google Drive 和 Gmail 隐私。</p>
+    <p>对比了几家渠道后，目前我们组续费主要走 <a href="https://ai66.org/gemini">Ai66.org 的 Gemini 充值与购买专页</a>，核心原因有三点：</p>
+    <ul>
+      <li><strong>原号免密码直充</strong>：不用交出 Google 密码或两步验证码，下单只填 Google 邮箱即可把会员和 5TB / 30TB 存储关联到自己原来的账号上。</li>
+      <li><strong>多周期与双 Ultra 档可选</strong>：短期试水开 1 个月（¥188），长期用直接开 3 个月（¥428）或年包（¥1288，折合 ¥107/月）；如果要高频跑 Veo 3.1 视频生成和 Gemini 4 Carbon 顶格配额，有 Ultra 100刀版（¥880/月）和 Ultra 旗舰版（¥1680/月）。</li>
+      <li><strong>售后与报销省心</strong>：支持支付宝/微信，万一账号自身冲突充不上能退全款，公司采购还能找客服开发票。</li>
+    </ul>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>档位名称</th><th>官方定价</th><th>国内实测参考价</th><th>包含存储与核心亮点</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Gemini Pro 月付</td><td>~$20/月</td><td>¥188 / 月</td><td>Gemini 4 Argon/Hydrogen、Deep Research、NotebookLM Plus、5TB 云盘</td></tr>
+          <tr><td>Gemini Pro 季付</td><td>—</td><td>¥428 / 3月（¥143/月）</td><td>同上全部权益，比按月续省 ¥136</td></tr>
+          <tr><td>Gemini Pro 年付</td><td>~$200/年</td><td>¥1288 / 年（¥107/月）</td><td>全年 5TB Google One 空间 + 完整 AI 套件</td></tr>
+          <tr><td>Gemini Ultra 100刀版</td><td>~$100/月</td><td>¥880 / 月</td><td>解锁 Gemini 4 Carbon + Deep Think、Veo 3.1 高阶配额</td></tr>
+          <tr><td>Gemini Ultra 旗舰版</td><td>~$250/月</td><td>¥1680 / 月</td><td>满血最高额度上限 + 30TB 云存储</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>三、常见报错：开了会员还提示“不支持你所在的国家/地区”怎么办？</h2>
+    <p>身边好几个同事刚充完打开 <code>gemini.google.com</code> 看到“Gemini 目前不支持你所在的国家/地区”以为没到账，其实 90% 是因为<strong>代理软件的自动测速切到了中国香港（HK）节点</strong>！Google 至今未对香港 IP 开放 Gemini。</p>
+    <ul>
+      <li><strong>第一步</strong>：手动把节点固定到<strong>美国（US）、新加坡（SG）或日本（JP）</strong>，并确认分流规则把 <code>gemini.google.com</code> 和 <code>notebooklm.google.com</code> 纳入了代理。</li>
+      <li><strong>第二步</strong>：如果切了美国全局无痕还是被拦，去 <code>policies.google.com/terms</code> 检查是不是你的老 Google 号关联地区被锁在了大陆或香港。完整的三步排障流程可以参考这篇很细的文档：<a href="https://ai66.org/blog/gemini-diqu-buzhichi-google-one">Gemini 提示当前国家/地区不支持与 Google One 排查指南</a>。</li>
+    </ul>
+
+    <p>下一篇笔记整理了四家主流订阅（ChatGPT、Claude、Gemini、Grok）在同一周工作流里的横向对比，可继续阅读：<a href="/posts/ai-subscription-china-benchmark.html">2026 国内开发者 AI 会员订阅避坑复盘</a>。</p>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <p><a href="/">← 返回 DevAI 工程笔记首页</a></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codex CLI、Claude Code 与 Grok 4.7 + Cursor 编程额度实测对比 | DevAI 工程笔记</title>
+  <meta name="description" content="开发者视角实测 OpenAI Codex CLI（Plus vs Pro100/Pro200）、Claude Code 终端重构与 xAI Grok 统一会员联动 Cursor 的真实配额与选型建议。">
+  <link rel="canonical" href="https://gptchongzhi.github.io/posts/claude-code-codex-workflow.html">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-inner">
+      <a class="brand" href="/">Dev<span>AI</span> 工程笔记</a>
+      <nav class="top-nav">
+        <a href="/">全部笔记</a>
+        <a href="/posts/gemini-pro-deep-research-notes.html">Gemini 4 实测</a>
+        <a href="/posts/ai-subscription-china-benchmark.html">四家订阅横评</a>
+        <a href="/posts/claude-code-codex-workflow.html">AI 编程流</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div><span class="tag">AI Coding</span><span class="tag">CLI 工具链</span></div>
+    <h1>终端双引擎：Codex CLI 与 Claude Code 配额消耗对比及 xAI Grok 4.7 联动 Cursor 体验</h1>
+    <p class="meta">更新于 2026-11-25 · 阅读约 5 分钟</p>
+
+    <p>现在写业务代码基本是“终端跑 Agent + IDE 补全”的混合工作流。很多朋友分不清买会员送的 CLI 额度和按量计费的 API Key 有什么区别，这里结合实际项目消耗做个拆解。</p>
+
+    <h2>一、OpenAI Codex：用 ChatGPT 账号登录 vs API Key</h2>
+    <p>安装官方 Codex CLI 后，直接选 <code>Sign in with ChatGPT</code> 就能走订阅套餐内的包含额度，不用单独去绑卡充 API 余额：</p>
+    <ul>
+      <li><strong>每天 2–3 小时常规改代码</strong>：开一档 <a href="https://ai66.org/chatgpt-plus-chongzhi">ChatGPT Plus（¥178/月）</a> 足够应付单模块开发。</li>
+      <li><strong>多仓库并行跑长时任务</strong>：Plus 容易触顶进入冷却，升级到 <a href="https://ai66.org/chatgpt">ChatGPT Pro100（¥880/月，10× 额度）或 Pro200（¥1680/月，20× 额度）</a> 后基本告别限流焦虑。如果遇到免费/Plus 登录 Codex 弹手机号验证，可参考 <a href="https://ai66.org/codex-shouji-yanzheng">Codex 手机验证排查说明</a>。</li>
+    </ul>
+
+    <h2>二、Claude Code：11 月风控后的稳妥用法</h2>
+    <p>Anthropic 的 Opus 5.5 在复杂前端交互和大型重构上的代码品味依然极强，但从 11 月 5 日起苹果内购代充几乎必触发二次 KYC 审核。如果项目急用 Claude Code，建议跳过折腾卡密，直接看 <a href="https://ai66.org/blog/claude-kyc-chengpinhao">Claude 两种 KYC 机制与美国实体卡成品号说明</a>，拿一人一号带初始邮箱的独立号在固定节点下跑终端任务，存活率高很多。</p>
+
+    <h2>三、xAI Grok 4.7 四合一会员连接 Cursor 的注意点</h2>
+    <p>xAI 改版后的统一会员（Premium ¥228 / Super ¥880 / Ultra ¥1680，详见 <a href="https://ai66.org/grok">Grok 会员购买与充值说明</a>）非常有意思：一个订阅同时包了 Grok 4.7、Grok Bot、Cursor 第一方 AI 用量和个人 X Premium+ 蓝标权益。</p>
+    <div class="note">
+      <strong>踩坑提醒：</strong>想要拿到 Cursor 联动权益，必须确认开通路径支持三端关联（官方说明从 X 侧直接点升级不包含 Cursor）；并且周额度是 Grok、Bot 与 Cursor 第一方调用共享的，在 Cursor 里切第三方 Claude/GPT 模型仍需单独计费。
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <p><a href="/">← 返回 DevAI 工程笔记首页</a></p>
+    </div>
+  </footer>
+</body>
+</html>
